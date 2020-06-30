@@ -5,7 +5,8 @@ import re
 
 @click.command()
 @click.argument("path")
-def anima_rename(path):
+@click.option("--apply", is_flag=True)
+def anima_rename(path, apply):
     os.chdir(path)
     path = Path(".")
     rename_suffix = [".mkv", ".mka", ".acc"]
@@ -30,14 +31,16 @@ def anima_rename(path):
         f = f.replace(']', '')
         dst_fname.append(f)
 
-    with open('rename.log', 'w') as logfile:
-        for i in range(len(src_fname)):
-            print(f'|{src_fname[i]}| --> |{dst_fname[i]}|')
-            logfile.write(f'|{src_fname[i]}| --> |{dst_fname[i]}|\n')
-
     for i in range(len(src_fname)):
-        sf = Path(src_fname[i])
-        sf.rename(dst_fname[i])
+        print(f'|{src_fname[i]}| --> |{dst_fname[i]}|')
+
+    if apply:
+        with open('rename.log', 'w') as logfile:
+            for i in range(len(src_fname)):
+                logfile.write(f'|{src_fname[i]}| --> |{dst_fname[i]}|\n')
+        for i in range(len(src_fname)):
+            sf = Path(src_fname[i])
+            sf.rename(dst_fname[i])
 
 
 if __name__ == "__main__":
