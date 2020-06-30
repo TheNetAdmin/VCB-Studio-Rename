@@ -18,7 +18,11 @@ def anima_rename(path, apply):
     common_entries = [
         r"(\s)*\[VCB-Studio\](\s)*",
         r"(\s)*\[Ma10p_1080p\](\s)*",
-        r"(\s)*\[x265_flac\](\s)*"
+        r"(\s)*\[x265_flac\](\s)*",
+        r"(\s)*\[[0-9A-F]{8}\](\s)*",
+        r"\.HKG\&X2",
+        r"\.EMD\&HKG",
+        r"\.HKG"
     ]
 
     dst_fname = []
@@ -27,8 +31,11 @@ def anima_rename(path, apply):
             p = re.compile(entry)
             f = p.sub('', f)
         # remove final brackets
-        f = f.replace('[', '')
-        f = f.replace(']', '')
+        f = f.replace('[', ' ')
+        f = f.replace(']', ' ')
+        f = f.replace('_', ' ')
+        f = f.replace('  ', ' ')
+        f = f.replace(' .', '.')
         dst_fname.append(f)
 
     for i in range(len(src_fname)):
