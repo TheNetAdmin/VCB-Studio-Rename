@@ -32,12 +32,12 @@ def anima_rename(path, apply):
         dst_fname.append(f)
 
     for i in range(len(src_fname)):
-        print(f'|{src_fname[i]}| --> |{dst_fname[i]}|')
+        print('|' + src_fname[i] + '| --> |' + dst_fname[i] + '|')
 
     if apply:
         with open('rename.log', 'w') as logfile:
             for i in range(len(src_fname)):
-                logfile.write('|' + 'src_fname[i]' + '| --> |' + '{dst_fname[i]' + '|\n')
+                logfile.write('|' + src_fname[i] + '| --> |' + dst_fname[i] + '|\n')
         for i in range(len(src_fname)):
             sf = Path(src_fname[i])
             sf.rename(dst_fname[i])
