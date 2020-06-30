@@ -19,6 +19,7 @@ def anima_rename(path, apply):
         r"(\s)*\[VCB-Studio\](\s)*",
         r"(\s)*\[Ma10p_1080p\](\s)*",
         r"(\s)*\[x265_flac\](\s)*",
+        r"(\s)*\[x265_flac_ac3\](\s)*",
         r"(\s)*\[[0-9A-F]{8}\](\s)*",
         r"\.HKG\&X2",
         r"\.EMD\&HKG",
