@@ -9,7 +9,7 @@ import re
 def anima_rename(path, apply):
     os.chdir(path)
     path = Path(".")
-    rename_suffix = [".mkv", ".mka", ".acc"]
+    rename_suffix = [".mkv", ".mka", ".ass"]
     src_fname = []
     for f in path.iterdir():
         if not f.is_dir() and f.suffix in rename_suffix:
