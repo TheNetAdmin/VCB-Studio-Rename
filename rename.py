@@ -5,8 +5,8 @@ import re
 
 @click.command()
 @click.argument("path")
-@click.option("--apply", is_flag=True)
-@click.option("--dirs", is_flag=True)
+@click.option("--apply", is_flag=True, help="Apply renaming")
+@click.option("--dirs", is_flag=True, help="Rename directories only")
 def anima_rename(path, apply, dirs):
 	os.chdir(path)
 	path = Path(".")
