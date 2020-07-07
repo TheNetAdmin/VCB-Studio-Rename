@@ -1,4 +1,4 @@
-# VCB-Studio-Rename 简化 VCB-S 文件名
+# VCB-Studio-Rename: VCB-Sudio 文件名简化工具
 
 本项目提供一个重命名工具，专门用于简化 [VCB-Sudio](https://vcb-s.com) 压制的动画的文件名，例如从文件名中去掉 `[Ma10p_1080p]`。
 
