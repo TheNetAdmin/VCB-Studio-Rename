@@ -36,10 +36,10 @@ Options:
 
 ```shell
 # python3 rename.py "/files/[VCB-Studio] PERSONA5 the Animation [Ma10p_1080p]"
-|[VCB-Studio] PERSONA5 the Animation [01][Ma10p_1080p][x265_flac_aac].mkv|	                    --> |PERSONA5 the Animation 01.mkv|
+|[VCB-Studio] PERSONA5 the Animation [01][Ma10p_1080p][x265_flac_aac].mkv|                      --> |PERSONA5 the Animation 01.mkv|
 ...
-|[VCB-Studio] PERSONA5 the Animation [27(Dark Sun...)][Ma10p_1080p][x265_flac_aac].mkv|	        --> |PERSONA5 the Animation 27(Dark Sun...).mkv|
-|[VCB-Studio] PERSONA5 the Animation -THE DAY BREAKERS- [OVA][Ma10p_1080p][x265_flac_aac].mkv|	--> |PERSONA5 the Animation -THE DAY BREAKERS- OVA.mkv|
+|[VCB-Studio] PERSONA5 the Animation [27(Dark Sun...)][Ma10p_1080p][x265_flac_aac].mkv|         --> |PERSONA5 the Animation 27(Dark Sun...).mkv|
+|[VCB-Studio] PERSONA5 the Animation -THE DAY BREAKERS- [OVA][Ma10p_1080p][x265_flac_aac].mkv|  --> |PERSONA5 the Animation -THE DAY BREAKERS- OVA.mkv|
 
 ```
 
@@ -47,10 +47,10 @@ Options:
 
 ```shell
 # python3 rename.py "/files/[VCB-Studio] PERSONA5 the Animation [Ma10p_1080p]" --apply
-|[VCB-Studio] PERSONA5 the Animation [01][Ma10p_1080p][x265_flac_aac].mkv|	                    --> |PERSONA5 the Animation 01.mkv|
+|[VCB-Studio] PERSONA5 the Animation [01][Ma10p_1080p][x265_flac_aac].mkv|                      --> |PERSONA5 the Animation 01.mkv|
 ...
-|[VCB-Studio] PERSONA5 the Animation [27(Dark Sun...)][Ma10p_1080p][x265_flac_aac].mkv|	        --> |PERSONA5 the Animation 27(Dark Sun...).mkv|
-|[VCB-Studio] PERSONA5 the Animation -THE DAY BREAKERS- [OVA][Ma10p_1080p][x265_flac_aac].mkv|	--> |PERSONA5 the Animation -THE DAY BREAKERS- OVA.mkv|
+|[VCB-Studio] PERSONA5 the Animation [27(Dark Sun...)][Ma10p_1080p][x265_flac_aac].mkv|         --> |PERSONA5 the Animation 27(Dark Sun...).mkv|
+|[VCB-Studio] PERSONA5 the Animation -THE DAY BREAKERS- [OVA][Ma10p_1080p][x265_flac_aac].mkv|  --> |PERSONA5 the Animation -THE DAY BREAKERS- OVA.mkv|
 ```
 
 以上操作只重命名视频文件和字幕文件，详见 `rename.py` 代码中的 `rename_suffix`。
