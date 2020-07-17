@@ -22,12 +22,14 @@ def anima_rename(path, apply, dirs):
 				src_fname.append(f.name)
 	
 	common_entries = [
-		r"(\s)*\[.*VCB-Studio\](\s)*",
+		r"(\s)*\[.*VCB-S[(tudio)]*[\w\d\&\-]*\](\s)*",
 		r"(\s)*\[.*FLsnow\](\s)*",
 		r"(\s)*\[UHA\-WINGS\&LoliHouse\](\s)*",
 		r"(\s)*\[1080p\](\s)*",
 		r"(\s)*\[Ma10p_1080p\](\s)*",
+		r"(\s)*\[Hi10p_1080p\](\s)*",
 		r"(\s)*\[Ma10p_720p\](\s)*",
+		r"(\s)*\[x264_[2]*flac\](\s)*",
 		r"(\s)*\[x265_flac\](\s)*",
 		r"(\s)*\[x265_ac3\](\s)*",
 		r"(\s)*\[x265_flac_ac3\](\s)*",
@@ -42,6 +44,10 @@ def anima_rename(path, apply, dirs):
 		r"^\s+"
 	]
 
+	post_process_entries = [
+		r"^\s+"
+	]
+
 	dst_fname = []
 	for f in src_fname:
 		for entry in common_entries:
@@ -52,8 +58,16 @@ def anima_rename(path, apply, dirs):
 		f = f.replace(']', ' ')
 		f = f.replace('_', ' ')
 		f = f.replace('-', ' ')
-		f = f.replace('  ', ' ')
+		f = f.replace(':', ' ')
+		f = f.replace('：', ' ')
+		f = f.replace('/', ' ')
+		f = f.replace('／', ' ')
 		f = f.replace(' .', '.')
+		while '  ' in f:
+			f = f.replace('  ', ' ')
+		for entry in post_process_entries:
+			p = re.compile(entry)
+			f = p.sub('', f)
 		dst_fname.append(f)
 
 	sf = src_fname.copy()
