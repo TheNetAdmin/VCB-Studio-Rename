@@ -25,19 +25,22 @@ def anima_rename(path, apply, dirs):
 		r"(\s)*\[.*VCB-S[(tudio)]*[\w\d\&\-]*\](\s)*",
 		r"(\s)*\[.*FLsnow\](\s)*",
 		r"(\s)*\[UHA\-WINGS\&LoliHouse\](\s)*",
-		r"(\s)*\[1080p\](\s)*",
-		r"(\s)*\[Ma10p_1080p\](\s)*",
-		r"(\s)*\[Hi10p_1080p\](\s)*",
-		r"(\s)*\[Ma10p_720p\](\s)*",
+		r"(\s)*\[Nekomoe kissaten[(\&LoliHouse)]*\](\s)*",
+		r"(\s)*\[1080[pP]\](\s)*",
+		r"(\s)*\[1920[xX]1080\](\s)*",
+		r"(\s)*\[BDRIP\](\s)*",
+		r"(\s)*\[[(Ma)(Hi)]*10p_[(1080)(720)]*p\](\s)*",
 		r"(\s)*\[x264_[2]*flac\](\s)*",
 		r"(\s)*\[x265_flac\](\s)*",
 		r"(\s)*\[x265_ac3\](\s)*",
 		r"(\s)*\[x265_flac_ac3\](\s)*",
-		r"(\s)*\[x265_flac_aac\](\s)*",
+		r"(\s)*\[x265_flac_[2]*aac\](\s)*",
 		r"(\s)*\[AVC_AAC\](\s)*",
 		r"(\s)*\[[0-9A-F]{8}\](\s)*",
 		r"(\s)*\[WEBRIP\](\s)*",
-		r"(\s)*\[WebRip 1080p HEVC\-[\w\d]* AAC ASSx2\](\s)*",
+		r"(\s)*\[H264_FLAC\](\s)*",
+		r"(\s)*\[HEVC[\s\w\d]*FLAC\](\s)*",
+		r"(\s)*\[WebRip 1080p HEVC\-[\w\d]* [(AAC)(ASSx2)\s]*\](\s)*",
 		r"\.HKG\&X2",
 		r"\.EMD\&HKG",
 		r"\.HKG",
@@ -45,7 +48,8 @@ def anima_rename(path, apply, dirs):
 	]
 
 	post_process_entries = [
-		r"^\s+"
+		r"^\s+",
+		r"\s+$"
 	]
 
 	dst_fname = []
@@ -56,10 +60,11 @@ def anima_rename(path, apply, dirs):
 		# remove final brackets
 		f = f.replace('[', ' ')
 		f = f.replace(']', ' ')
-		f = f.replace('_', ' ')
-		f = f.replace('-', ' ')
+		#f = f.replace('_', ' ')
+		#f = f.replace('-', ' ')
 		f = f.replace(':', ' ')
 		f = f.replace('：', ' ')
+		f = f.replace('!', ' ')
 		f = f.replace('/', ' ')
 		f = f.replace('／', ' ')
 		f = f.replace(' .', '.')
