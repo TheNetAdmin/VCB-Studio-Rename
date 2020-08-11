@@ -22,28 +22,53 @@ def anima_rename(path, apply, dirs):
 				src_fname.append(f.name)
 	
 	common_entries = [
+                # Vendors
 		r"(\s)*\[.*VCB-S[(tudio)]*[\w\d\&\-]*\](\s)*",
 		r"(\s)*\[.*FLsnow\](\s)*",
+		r"(\s)*\[Kamigami\](\s)*",
+		r"(\s)*\[DMG\](\s)*",
+		r"(\s)*\[SFEO-Raws\](\s)*",
+		r"(\s)*\[ANK-Raws\](\s)*",
+		r"(\s)*\[SumiSora\](\s)*",
+		r"(\s)*\[YYDM-11FANS\](\s)*",
 		r"(\s)*\[UHA\-WINGS\&LoliHouse\](\s)*",
 		r"(\s)*\[Nekomoe kissaten[(\&LoliHouse)]*\](\s)*",
+                # Labels
 		r"(\s)*\[1080[pP]\](\s)*",
+		r"(\s)*\[1080[pP]_Ma10P\](\s)*",
+		r"(\s)*\[1080[pP]_Hi10P\](\s)*",
+		r"(\s)*\[720[pP]\](\s)*",
 		r"(\s)*\[1920[xX]1080\](\s)*",
-		r"(\s)*\[BDRIP\](\s)*",
+		r"(\s)*\[BD[Rr][Ii][Pp][\-\s\w\d\_]*\](\s)*",
+		r"(\s)*\(BD 1080P x264 FLAC\)(\s)*",
 		r"(\s)*\[[(Ma)(Hi)]*10p_[(1080)(720)]*p\](\s)*",
 		r"(\s)*\[x264_[2]*flac\](\s)*",
-		r"(\s)*\[x265_flac\](\s)*",
+		r"(\s)*\[[xX]264_AAC\](\s)*",
+		r"(\s)*\[x265_[2]*flac\](\s)*",
 		r"(\s)*\[x265_ac3\](\s)*",
 		r"(\s)*\[x265_flac_ac3\](\s)*",
 		r"(\s)*\[x265_flac_[2]*aac\](\s)*",
 		r"(\s)*\[AVC_AAC\](\s)*",
+		r"(\s)*\[AVC_FLAC\](\s)*",
 		r"(\s)*\[[0-9A-F]{8}\](\s)*",
+		r"(\s)*\([0-9A-F]{8}\)(\s)*",
 		r"(\s)*\[WEBRIP\](\s)*",
+		r"(\s)*\[Movie[\w\(\)\.\s]*\](\s)*",
 		r"(\s)*\[H264_FLAC\](\s)*",
 		r"(\s)*\[HEVC[\s\w\d]*FLAC\](\s)*",
+		r"(\s)*\[HEVC_ALS\](\s)*",
+		r"(\s)*\(BD[Rr]ip[\-\s\w\d\_]*FLAC\)(\s)*",
+		r"(\s)*\(BD[\-\s\w\d\_]*AAC\)(\s)*",
 		r"(\s)*\[WebRip 1080p HEVC\-[\w\d]* [(AAC)(ASSx2)\s]*\](\s)*",
 		r"\.HKG\&X2",
 		r"\.EMD\&HKG",
 		r"\.HKG",
+                # Misc
+		r"(\s)*「.*」(\s)*",
+		r"[第話章]",
+                r"YY-",
+                r"\.JYFanSub-",
+                r"\ V2",
 		r"^\s+"
 	]
 
@@ -61,12 +86,16 @@ def anima_rename(path, apply, dirs):
 		f = f.replace('[', ' ')
 		f = f.replace(']', ' ')
 		#f = f.replace('_', ' ')
-		#f = f.replace('-', ' ')
+		f = f.replace(' - ', ' ')
+		f = f.replace('-', ' ')
+		f = f.replace('～', ' ')
 		f = f.replace(':', ' ')
+		f = f.replace(';', ' ')
 		f = f.replace('：', ' ')
 		f = f.replace('!', ' ')
 		f = f.replace('/', ' ')
 		f = f.replace('／', ' ')
+		f = f.replace('？', ' ')
 		f = f.replace(' .', '.')
 		while '  ' in f:
 			f = f.replace('  ', ' ')
