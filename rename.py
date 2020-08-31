@@ -49,7 +49,7 @@ def anima_rename(path, apply, dirs):
 		r"(\s)*\[x265_flac_ac3\](\s)*",
 		r"(\s)*\[x265_flac_[2]*aac\](\s)*",
 		r"(\s)*\[AVC_AAC\](\s)*",
-		r"(\s)*\[AVC_FLAC\](\s)*",
+		r"(\s)*\[AVC_FLAC[xX2]*\](\s)*",
 		r"(\s)*\[[0-9A-F]{8}\](\s)*",
 		r"(\s)*\([0-9A-F]{8}\)(\s)*",
 		r"(\s)*\[WEBRIP\](\s)*",
@@ -85,10 +85,11 @@ def anima_rename(path, apply, dirs):
 		# remove final brackets
 		f = f.replace('[', ' ')
 		f = f.replace(']', ' ')
-		#f = f.replace('_', ' ')
+		f = f.replace('_', ' ')
 		f = f.replace(' - ', ' ')
 		f = f.replace('-', ' ')
 		f = f.replace('～', ' ')
+		f = f.replace('~', ' ')
 		f = f.replace(':', ' ')
 		f = f.replace(';', ' ')
 		f = f.replace('：', ' ')
