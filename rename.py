@@ -11,7 +11,7 @@ import re
 def anima_rename(path, apply, dirs):
 	os.chdir(path)
 	path = Path(".")
-	rename_suffix = [".mkv", ".mka", ".ass"]
+	rename_suffix = [".mkv", ".mka", ".ass", ".mp4"]
 	src_fname = []
 	for f in path.iterdir():
 		if not dirs:
@@ -23,8 +23,11 @@ def anima_rename(path, apply, dirs):
 	
 	common_entries = [
                 # Vendors
-		r"(\s)*\[.*VCB-S[(tudio)]*[\w\d\&\-]*\](\s)*",
+		#r"(\s)*\[.*VCB-S[(tudio)]*[\w\d\&\-]*\](\s)*",
+		r"(\s)*\[.*?VCB.*?\](\s)*",
 		r"(\s)*\[.*FLsnow\](\s)*",
+		r"(\s)*\[LoliHouse.*?\](\s)*",
+		r"(\s)*\[Moozzi2.*?\](\s)*",
 		r"(\s)*\[Kamigami\](\s)*",
 		r"(\s)*\[DMG\](\s)*",
 		r"(\s)*\[SFEO-Raws\](\s)*",
@@ -34,7 +37,15 @@ def anima_rename(path, apply, dirs):
 		r"(\s)*\[UHA\-WINGS\&LoliHouse\](\s)*",
 		r"(\s)*\[Nekomoe kissaten[(\&LoliHouse)]*\](\s)*",
                 # Labels
-		r"(\s)*\[1080[pP]\](\s)*",
+		r"(\s)*\[(1080)[pP].*?\](\s)*",
+		r"(\s)*\[Ma10[pP].*?\](\s)*",
+		r"(\s)*\[BDRip.*?\](\s)*",
+		r"(\s)*\[HEVC.*?\](\s)*",
+		r"(\s)*\[MKV.*?\](\s)*",
+		r"(\s)*\[x265.*?\](\s)*",
+		r"(\s)*\[H264.*?\](\s)*",
+		r"(\s)*\(BD.*?\)(\s)*",
+                # Labels - more exact matches
 		r"(\s)*\[1080[pP]_Ma10P\](\s)*",
 		r"(\s)*\[1080[pP]_Hi10P\](\s)*",
 		r"(\s)*\[720[pP]\](\s)*",
@@ -78,6 +89,7 @@ def anima_rename(path, apply, dirs):
 	post_process_entries = [
 		r"^\s+",
 		r"\s+$"
+                #"[\(\)]"
 	]
 
 	dst_fname = []
